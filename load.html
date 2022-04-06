@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Load</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background-color: burlywood;
+      }
+      .load {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .percent {
+        text-align: center;
+        font-size: 50px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+      .progress {
+        width: 200px;
+        height: 200px;
+        background-color: rgba(255, 255, 255, 0);
+        border-radius: 50%;
+        padding: 3px;
+        animation: rotate 7.5s forwards;
+        border: 40px solid yellow;
+      }
+      .progressbar {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top: -37px;
+        left: 40px;
+        border-radius: 50%;
+        line-height: 25px;
+        background-color: royalblue;
+      }
+      .text {
+        color: rgb(0, 0, 0);
+        position: absolute;
+        left: 30%;
+        top: 59%;
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 30px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        display: none;
+      }
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="load">
+      <div class="text">Completed !</div>
+      <div class="percent">100%</div>
+      <div class="progress">
+        <div class="progressbar"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    var percent = document.querySelector(".percent");
+    var text = document.querySelector(".text");
+
+    var percentcounter = 0;
+    var loading = setInterval(loading, 50);
+
+    function loading() {
+      if (percentcounter == 100) {
+        clearInterval(loading);
+        text.style.display = "block";
+      } else {
+
+        percentcounter = percentcounter + 1;
+        percent.textContent = percentcounter + "%";
+      }
+    }
+  </script>
+</html>
